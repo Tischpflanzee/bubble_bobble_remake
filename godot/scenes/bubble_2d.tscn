@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://das2rc3k8rsce"]
+
+[ext_resource type="Script" uid="uid://d2oyvfgd7whgk" path="res://scripts/bubble_2d.gd" id="1_hgubd"]
+[ext_resource type="Texture2D" uid="uid://ci7gkrvxuc0ja" path="res://sprites/bubble_sprite.png" id="2_sr36t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fu3e5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sr36t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="bubble_2d" type="Area2D" unique_id=521916451]
+script = ExtResource("1_hgubd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1767314184]
+sprite_frames = SubResource("SpriteFrames_fu3e5")
+
+[node name="rechts" type="RayCast2D" parent="." unique_id=1206746240]
+target_position = Vector2(10, 0)

@@ -1,10 +1,11 @@
+RayCast2D
 CollisionShape2D
 AnimatedSprite2D
+Area2D
+Timer
 RigidBody2D
 Sprite2D
-Area2D
 TileMapLayer
-RayCast2D
 Camera2D
 SubViewport
 Marker2D

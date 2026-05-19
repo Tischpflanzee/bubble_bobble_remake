@@ -8,6 +8,8 @@ const JUMP_VELOCITY = -100.0
 @onready var check_up = $RayCast2D
 
 signal create_bubble
+signal left
+signal right
 #signal hit_celing
 
 
@@ -17,9 +19,12 @@ signal create_bubble
 func _process(_delta):
 	if Input.is_action_pressed("move_right"):
 		_animated_sprite.flip_h = true
+		emit_signal("right")
 		_animated_sprite.play("walk")
 	elif Input.is_action_pressed("move_left"):
 		_animated_sprite.flip_h = false
+		emit_signal("left")
+		
 		_animated_sprite.play("walk")
 	else:
 		_animated_sprite.stop()
@@ -30,8 +35,7 @@ func _process(_delta):
 		set_collision_mask_value(1,true)
 		
 	if Input.is_action_pressed("create_bubble"):
-		
-		print("Bubbled")
+		emit_signal("create_bubble")
 	
 	#if  !is_on_floor() and check_up.is_colliding()  :
 	#	print("Collided!")a
