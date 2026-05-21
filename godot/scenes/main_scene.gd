@@ -21,6 +21,10 @@ func _process(delta: float) -> void:
 func _on_character_body_2d_create_bubble() -> void:
 	var bubble = scene.instantiate()
 	
+ 
+	
+	
+	
 	bubble.position = player.position 
 	if direction == "right":
 		bubble.position.x = player.position.x +15
