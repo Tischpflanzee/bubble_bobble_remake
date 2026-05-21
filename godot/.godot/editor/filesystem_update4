@@ -1,6 +1,4 @@
 res://scenes/bubble_2d.tscn
 res://scripts/bubble_2d.gd
-res://scenes/Main_scene.tscn
 res://scenes/main_scene.gd
-res://scenes/player.tscn
-res://scripts/player_script.gd
+res://scenes/Main_scene.tscn

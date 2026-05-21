@@ -23,9 +23,9 @@ func _on_character_body_2d_create_bubble() -> void:
 	
 	bubble.position = player.position 
 	if direction == "right":
-		bubble.position.x = player.position.x +18
+		bubble.position.x = player.position.x +15
 	elif direction == "left":
-		bubble.position.x = player.position.x -18
+		bubble.position.x = player.position.x -15
 		
 	add_child(bubble)
 		
