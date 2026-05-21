@@ -6,22 +6,23 @@ const JUMP_VELOCITY = -100.0
 
 @onready var _animated_sprite = $texture
 @onready var check_up = $RayCast2D
+@onready var timer: Timer = $cooldown
 
 signal create_bubble
 signal left
 signal right
 #signal hit_celing
 
-
+var cooldown = false
 
 
 
 func _process(_delta):
-	if Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed("move_right") and not Input.is_action_pressed("move_left"):
 		_animated_sprite.flip_h = true
 		emit_signal("right")
 		_animated_sprite.play("walk")
-	elif Input.is_action_pressed("move_left"):
+	elif Input.is_action_pressed("move_left") and not Input.is_action_pressed("move_right"):
 		_animated_sprite.flip_h = false
 		emit_signal("left")
 		
@@ -35,7 +36,11 @@ func _process(_delta):
 		set_collision_mask_value(1,true)
 		
 	if Input.is_action_pressed("create_bubble"):
-		emit_signal("create_bubble")
+		 
+		if cooldown == false:
+			cooldown = true
+			timer.start()
+			emit_signal("create_bubble")
 	
 	#if  !is_on_floor() and check_up.is_colliding()  :
 	#	print("Collided!")a
@@ -65,9 +70,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-	
-	
 
 
-#func _on_node_2d_touch_wall() -> void:
-#	pass # Replace with function body.
+func _on_cooldown_timeout() -> void:
+	cooldown = false
+	pass # Replace with function body.

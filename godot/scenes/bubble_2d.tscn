@@ -22,3 +22,8 @@ sprite_frames = SubResource("SpriteFrames_fu3e5")
 
 [node name="rechts" type="RayCast2D" parent="." unique_id=1206746240]
 target_position = Vector2(10, 0)
+
+[node name="float_time" type="Timer" parent="." unique_id=409172593]
+wait_time = 0.001
+
+[connection signal="timeout" from="float_time" to="." method="_on_float_time_timeout"]

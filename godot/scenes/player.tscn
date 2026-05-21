@@ -65,3 +65,9 @@ target_position = Vector2(0, -4.332)
 
 [node name="texture" type="AnimatedSprite2D" parent="." unique_id=137560253]
 sprite_frames = SubResource("SpriteFrames_3vyb7")
+
+[node name="cooldown" type="Timer" parent="." unique_id=143553164]
+wait_time = 0.7
+one_shot = true
+
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
