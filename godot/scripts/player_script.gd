@@ -20,7 +20,8 @@ func is_right() -> bool:
 	return result
 	pass 
 	
-	
+
+
 
 func _process(_delta):
 	if Input.is_action_pressed("move_right") and not Input.is_action_pressed("move_left"):
