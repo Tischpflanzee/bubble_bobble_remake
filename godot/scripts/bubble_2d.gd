@@ -4,7 +4,9 @@ extends Area2D
 
 #@onready var oben = $oben
 @onready var rechts = $rechts
-#@onready var links = $links
+@onready var links = $links
+@onready var collisionShape = $CollisionShape2D
+
 #@onready var unten = $unten
 
 @onready var float_time: Timer = $float_time
@@ -25,30 +27,20 @@ var direction_right = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	float_time.start()
-	
+
 	var parent = get_parent()
 	var player = parent.get_node("Player")
 	direction_right = player.is_right()
-	
-	
-	
-	
-	
-#	print($Node2D/Player.is_right())
-	
-	
-	
-	pass # Replace with function body.
+
+func bubbeld():
+	pass
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
-		
-	
-	if rechts.is_colliding():
-		position.x -= 1
-	
-
+	manage_wall_collision() 
+	bubbeld()
 	pass
 
 		
@@ -71,9 +63,28 @@ func _on_float_time_timeout() -> void:
 	pass # Replace with function body.
 
 func pop() -> void:
-	
 	get_parent().remove_child(self)
-	
 	print("poped")
 	float_time.stop()
 	pass
+
+func manage_wall_collision():
+	if rechts.is_colliding():
+		position.x -= 1
+	if links.is_colliding():
+		position.x += 1
+pass
+
+
+
+	
+
+
+
+
+
+func _on_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	if is_in_group("Enemie"):
+		print("exited")
+
+	pass # Replace with function body.

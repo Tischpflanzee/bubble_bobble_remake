@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+Enemie=""
+
 [input]
 
 move_right={
@@ -49,6 +53,7 @@ create_bubble={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="walls"
 2d_physics/layer_3="Enimes and Bubbles"
+2d_physics/layer_4="Floor"
 
 [physics]
 

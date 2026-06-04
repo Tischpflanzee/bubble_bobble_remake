@@ -24,29 +24,11 @@ func is_right() -> bool:
 
 
 func _process(_delta):
-	if Input.is_action_pressed("move_right") and not Input.is_action_pressed("move_left"):
-		_animated_sprite.flip_h = true
-		emit_signal("right")
-		_animated_sprite.play("walk")
-	elif Input.is_action_pressed("move_left") and not Input.is_action_pressed("move_right"):
-		_animated_sprite.flip_h = false
-		emit_signal("left")
+	animations()
+	handle_collision_deactivating_when_jumping()
+	handle_bubble_input()
 		
-		_animated_sprite.play("walk")
-	else:
-		_animated_sprite.stop()
-	
-	if velocity.y < 0 :
-		set_collision_mask_value(1,false)
-	else :
-		set_collision_mask_value(1,true)
-		
-	if Input.is_action_pressed("create_bubble"):
-		 
-		if cooldown == false:
-			cooldown = true
-			timer.start()
-			emit_signal("create_bubble")
+
 	
 	#if  !is_on_floor() and check_up.is_colliding()  :
 	#	print("Collided!")a
@@ -68,7 +50,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
@@ -77,7 +58,38 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func animations() -> void:
+	if Input.is_action_pressed("move_right") and not Input.is_action_pressed("move_left"):
+		_animated_sprite.flip_h = true
+		emit_signal("right")
+		_animated_sprite.play("walk")
+	elif Input.is_action_pressed("move_left") and not Input.is_action_pressed("move_right"):
+		_animated_sprite.flip_h = false
+		emit_signal("left")
+		
+		_animated_sprite.play("walk")
+	else:
+		_animated_sprite.stop()
+	
+	
+	pass
 
-func _on_cooldown_timeout() -> void:
+func handle_collision_deactivating_when_jumping(): 
+	if velocity.y < 0 :
+		set_collision_mask_value(4,false)
+	else :
+		set_collision_mask_value(4,true)
+		
+func handle_bubble_input():
+	if Input.is_action_pressed("create_bubble"):
+		if cooldown == false:
+			cooldown = true
+			timer.start()
+			emit_signal("create_bubble")
+			
+	
+
+func _on_cooldown_timeout() -> void: 
 	cooldown = false
 	pass # Replace with function body.
+	
