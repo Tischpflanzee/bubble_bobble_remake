@@ -24,6 +24,11 @@ func print_():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if enemies_killed == 1:
-		pass
+		var parent = get_parent()
+		var node2d = parent.get_node("Node2D")
+		var map = node2d.get_node("map")
+		map.disable_map()
+		print("disabled")
+		
 
 	pass

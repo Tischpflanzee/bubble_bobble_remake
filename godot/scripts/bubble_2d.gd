@@ -74,6 +74,7 @@ func manage_wall_collision():
 		position.x -= 1
 	if links.is_colliding():
 		position.x += 1
+
 pass
 
 func enemie_collisions():
@@ -85,4 +86,5 @@ func enemie_collisions():
 		GameState.enemies_killed_add()
 	if links.is_colliding() and colider_l.is_in_group("Enemie"):
 		colider_l.get_parent().remove_child(colider_l)
+		GameState.enemies_killed_add()
 	
