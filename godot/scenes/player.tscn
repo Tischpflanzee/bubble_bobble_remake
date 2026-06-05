@@ -49,6 +49,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur7pv"]
+size = Vector2(16, 16)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1849381800]
 physics_interpolation_mode = 1
 collision_layer = 5
@@ -71,5 +74,10 @@ flip_h = true
 [node name="cooldown" type="Timer" parent="." unique_id=143553164]
 wait_time = 0.7
 one_shot = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1357472149]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=875374924]
+shape = SubResource("RectangleShape2D_ur7pv")
 
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

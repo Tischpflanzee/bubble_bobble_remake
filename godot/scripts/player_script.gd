@@ -30,12 +30,7 @@ func _process(_delta):
 		
 
 	
-	#if  !is_on_floor() and check_up.is_colliding()  :
-	#	print("Collided!")a
-	#	#hit_celing.emit()
-	#	set_collision_mask_value(1,false)
-	#else: 
-	#	set_collision_mask_value(1,true)
+
 		
 		
 	
@@ -66,12 +61,9 @@ func animations() -> void:
 	elif Input.is_action_pressed("move_left") and not Input.is_action_pressed("move_right"):
 		_animated_sprite.flip_h = false
 		emit_signal("left")
-		
 		_animated_sprite.play("walk")
 	else:
 		_animated_sprite.stop()
-	
-	
 	pass
 
 func handle_collision_deactivating_when_jumping(): 

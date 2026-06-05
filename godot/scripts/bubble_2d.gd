@@ -75,16 +75,20 @@ func manage_wall_collision():
 	if links.is_colliding():
 		position.x += 1
 
-pass
+
 
 func enemie_collisions():
 	var colider_r = rechts.get_collider()
 	var colider_l = links.get_collider()
 	
 	if rechts.is_colliding() and colider_r.is_in_group("Enemie"):
-		colider_r.get_parent().remove_child(colider_r)
+		colider_r.queue_free()
+		pop()
+		GameState.score_add(500)
 		GameState.enemies_killed_add()
 	if links.is_colliding() and colider_l.is_in_group("Enemie"):
-		colider_l.get_parent().remove_child(colider_l)
+		colider_l.queue_free()
+		pop()
+		GameState.score_add(500)
 		GameState.enemies_killed_add()
 	

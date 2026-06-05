@@ -3,8 +3,11 @@ extends Node2D
 var scene = preload("res://scenes/bubble_2d.tscn")
 var cooldown = true
 var direction = "left"
+var zähler_gegner:int = 0
+
 @onready var player = $Player
 @onready var enemie_spawn_point = $enemie_spawn_point
+@onready var enemie_spawn_cooldown: Timer = $enemie_spawn_cooldown
 
 
 
@@ -14,13 +17,12 @@ var direction = "left"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
-	spwan_enemie()
+	enemie_spawn_cooldown.start()
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
 	pass
 
 func spwan_enemie():
@@ -61,7 +63,8 @@ func _on_player_right() -> void:
 	pass # Replace with function body.
 
 
-func _on_timer_timeout() -> void:
-	#print(get_children())
-#	bubble.position.x +=  +18
+func _on_enemie_spawn_cooldown_timeout() -> void:
+	if zähler_gegner != 3:
+		spwan_enemie()
+		zähler_gegner += 1
 	pass # Replace with function body.

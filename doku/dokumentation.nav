@@ -1,0 +1,58 @@
+\headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
+\headcommand {\beamer@framepages {1}{1}}
+\headcommand {\beamer@sectionpages {1}{0}}
+\headcommand {\beamer@subsectionpages {1}{0}}
+\headcommand {\sectionentry {1}{Einleitung}{1}{Einleitung}{0}}
+\headcommand {\beamer@sectionpages {1}{0}}
+\headcommand {\beamer@subsectionpages {1}{0}}
+\headcommand {\sectionentry {2}{Planung}{1}{Planung}{0}}
+\headcommand {\beamer@subsectionpages {1}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{1}{Produktskizze}}
+\headcommand {\beamer@subsubsectionentry {0}{2}{1}{1}{1}{Ziel des Spieles}}
+\headcommand {\beamer@subsubsectionentry {0}{2}{1}{2}{1}{Genre des Spiels}}
+\headcommand {\beamer@subsubsectionentry {0}{2}{1}{3}{1}{Grobe Struktur der Benutzeroberfläche}}
+\headcommand {\beamer@subsubsectionentry {0}{2}{1}{4}{1}{Aufgaben und Vorgehen des Spielers}}
+\headcommand {\beamer@subsubsectionentry {0}{2}{1}{5}{1}{Spielende}}
+\headcommand {\beamer@subsectionpages {1}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{1}{Prototypen}}
+\headcommand {\beamer@subsubsectionentry {0}{2}{2}{1}{2}{Spielbeginn}}
+\headcommand {\beamer@subsubsectionentry {0}{2}{2}{2}{2}{Typische Szene im Spiel}}
+\headcommand {\beamer@subsubsectionentry {0}{2}{2}{3}{3}{Spielende}}
+\headcommand {\beamer@subsectionpages {1}{2}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{3}{Versionierung}}
+\headcommand {\beamer@sectionpages {1}{3}}
+\headcommand {\beamer@subsectionpages {3}{3}}
+\headcommand {\sectionentry {3}{Entwurf}{4}{Entwurf}{0}}
+\headcommand {\beamer@subsectionpages {4}{3}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{4}{Struktogramm(e) einer (von) Methode(n)}}
+\headcommand {\beamer@sectionpages {4}{3}}
+\headcommand {\beamer@subsectionpages {4}{3}}
+\headcommand {\sectionentry {4}{Durchführung}{4}{Durchführung}{0}}
+\headcommand {\beamer@subsectionpages {4}{3}}
+\headcommand {\beamer@subsectionentry {0}{4}{1}{4}{Beschreibung Ablauf }}
+\headcommand {\beamer@subsubsectionentry {0}{4}{1}{1}{4}{Ideenfindung}}
+\headcommand {\beamer@subsubsectionentry {0}{4}{1}{2}{4}{Erstes Level}}
+\headcommand {\beamer@subsubsectionentry {0}{4}{1}{3}{4}{Blasen}}
+\headcommand {\beamer@subsubsectionentry {0}{4}{1}{4}{4}{Gegner}}
+\headcommand {\beamer@subsubsectionentry {0}{4}{1}{5}{5}{Spiellogik}}
+\headcommand {\beamer@subsectionpages {4}{4}}
+\headcommand {\beamer@subsectionentry {0}{4}{2}{5}{Beschreibung des Spielablaufs}}
+\headcommand {\beamer@subsectionpages {5}{4}}
+\headcommand {\beamer@subsectionentry {0}{4}{3}{5}{Fehlerprotokoll und Maßnahmen zur Behebung}}
+\headcommand {\beamer@subsectionpages {5}{4}}
+\headcommand {\beamer@subsectionentry {0}{4}{4}{5}{Kommentierter Quelltext}}
+\headcommand {\beamer@subsectionpages {5}{4}}
+\headcommand {\beamer@subsectionentry {0}{4}{5}{5}{Begründung von Abweichungen gegenüber Planung}}
+\headcommand {\beamer@subsectionpages {5}{4}}
+\headcommand {\beamer@subsectionentry {0}{4}{6}{5}{Screenshots}}
+\headcommand {\beamer@sectionpages {4}{4}}
+\headcommand {\beamer@subsectionpages {5}{4}}
+\headcommand {\sectionentry {5}{Fazit}{5}{Fazit}{0}}
+\headcommand {\beamer@sectionpages {5}{4}}
+\headcommand {\beamer@subsectionpages {5}{4}}
+\headcommand {\sectionentry {6}{Quellen}{5}{Quellen}{0}}
+\headcommand {\beamer@partpages {1}{5}}
+\headcommand {\beamer@subsectionpages {1}{5}}
+\headcommand {\beamer@sectionpages {1}{5}}
+\headcommand {\beamer@documentpages {5}}
+\headcommand {\gdef \inserttotalframenumber {1}}
