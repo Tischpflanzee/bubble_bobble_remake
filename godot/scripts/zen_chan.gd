@@ -20,7 +20,9 @@ var cooldown:bool
 #var parent = get_parent()#.Player.is_right()
 #var player = parent.Player
 	
-
+func in_bubble():
+	
+	pass
 
 
 func _ready() -> void:
@@ -54,7 +56,7 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor():
 		velocity.x = SPEED * richtung
-	elif velocity.y < 0 and player.position.y < self.position.y - 20:
+	elif velocity.y < 0 and player.position.y > self.position.y - JUMP_VELOCITY:
 		velocity.x = 0
 
 

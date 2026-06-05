@@ -1,5 +1,6 @@
-res://scenes/Main_scene.tscn
-res://scripts/zen_chan.gd
 res://scenes/zen_chan.tscn
-res://scripts/bubble_2d.gd
+res://scripts/zen_chan.gd
 res://scenes/bubble_2d.tscn
+res://scripts/bubble_2d.gd
+res://scenes/Main_scene.tscn
+res://scripts/game_state.gd
