@@ -14,6 +14,7 @@ signal right
 #signal hit_celing
 
 var cooldown = false
+var health:int
 
 func is_right() -> bool:
 	var result = _animated_sprite.flip_h
@@ -85,3 +86,14 @@ func _on_cooldown_timeout() -> void:
 	cooldown = false
 	pass # Replace with function body.
 	
+func set_health(value) -> void:
+	health = value
+
+func get_health() -> int:
+	return health
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void: # Health Mangement d
+	if body.is_in_group("Enemie"):
+		health -= 1
+	pass # Replace with function body.

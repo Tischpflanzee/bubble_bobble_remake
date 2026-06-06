@@ -76,8 +76,13 @@ wait_time = 0.7
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1357472149]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=875374924]
 shape = SubResource("RectangleShape2D_ur7pv")
 
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

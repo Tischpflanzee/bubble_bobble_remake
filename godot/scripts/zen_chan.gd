@@ -55,15 +55,20 @@ func animations() -> void:
 	$AnimatedSprite2D.play("walk")
 
 func jump_over_hole() -> void:
+	if check_floor.is_colliding():
+		return
+	if !is_on_floor():
+		return
 	var parent = get_parent()
 	var player = parent.get_node("Player")#
 	var player_position:int = player.position.y #chaning to because values are difrent when not an Int
 	var zen_chan_position:int = self.position.y #chaning to because values are difrent when not an Int
-	
-	if !check_floor.is_colliding() and is_on_floor() and player_position < zen_chan_position - 20 or !check_floor.is_colliding() and is_on_floor() and player_position == zen_chan_position:
+	if player_position <= zen_chan_position:
 		velocity.y = JUMP_VELOCITY / 2 
 
+
 func _on_jump_cooldown_timeout() -> void: # handle jump
+	
 	var parent = get_parent()
 	var player = parent.get_node("Player")
 	
