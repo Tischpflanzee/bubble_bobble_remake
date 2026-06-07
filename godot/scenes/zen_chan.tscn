@@ -63,4 +63,9 @@ collision_mask = 8
 wait_time = 0.1
 one_shot = true
 
+[node name="check_celling" type="RayCast2D" parent="." unique_id=1280392548]
+position = Vector2(0, 8)
+target_position = Vector2(0, -33)
+collision_mask = 8
+
 [connection signal="timeout" from="jump_cooldown" to="." method="_on_jump_cooldown_timeout"]

@@ -10,16 +10,26 @@ const JUMP_VELOCITY = -100.0
 @onready var jump_cooldown: Timer = $jump_cooldown
 @onready var check_floor: RayCast2D = $check_floor
 @onready var timer: Timer = $check_floor/Timer
+@onready var check_celling: RayCast2D = $check_celling
 
 
 var richtung = -1
 var cooldown:bool
+var check_jump:bool = false
 var time_left
-
 
 func in_bubble():
 	pass
 
+func fliped(toggle:bool):
+	var sprite = $AnimatedSprite2D  # needed when just spawned
+	var wall_collsion = $Wall_check
+	var check_floor: RayCast2D = $check_floor
+	if toggle == true:
+		richtung *= -1
+		sprite.flip_h = true
+		wall_collsion.target_position.x *= -1
+		check_floor.position.x *= -1
 
 func _ready() -> void:
 	timer.start()
@@ -31,6 +41,8 @@ func _process(delta: float) -> void:
 	animations()
 	jump_over_hole()
 	handle_collision_deactivating_when_jumping()
+	if check_jump == true:
+		jump()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -40,10 +52,16 @@ func _physics_process(delta: float) -> void:
 	var parent = get_parent()
 	var player = parent.get_node("Player")
 	
+	if check_jump == true:
+		velocity.x = 0
+		move_and_slide()
+		return
+	
 	if is_on_floor():
 		velocity.x = SPEED * richtung
-	elif velocity.y < 0 and player.position.y > self.position.y - JUMP_VELOCITY:
+	elif velocity.y > 0 and player.position.y > self.position.y - (JUMP_VELOCITY / 2 ):
 		velocity.x = 0
+		
 	move_and_slide()
 
 func flip() -> void:
@@ -76,13 +94,39 @@ func jump_over_hole() -> void:
 
 
 func _on_jump_cooldown_timeout() -> void: # handle jump
-	
+	if check_celling.is_colliding() == false:
+		return
 	var parent = get_parent()
 	var player = parent.get_node("Player")
+	if player.position.y > self.position.y - 20:
+		return  
 	
-	if player.position.y < self.position.y - 20 and is_on_floor() and self.position.y > -136:
-		velocity.y = JUMP_VELOCITY 
+	var player_pos:int = player.position.y
+	var self_pos:int = self.position.y
+	if self_pos == player_pos:
+		return
+
+	
+	if  is_on_floor() :
+		check_jump = true # enables to check if ablet to jump and the jump
 		
+
+func jump() -> void: 
+	if !is_on_floor():
+		return
+	
+	if check_celling.is_colliding() == false:
+		velocity.y = 0
+	if self.velocity.y < 0:
+		pass
+	var player_pos:int = get_parent().get_node("Player").position.y
+	var self_pos:int = self.position.y
+	
+	if self_pos <= player_pos:
+		check_jump = false
+		return
+	
+	velocity.y = JUMP_VELOCITY 
 
 func handle_collision_deactivating_when_jumping():  
 	if velocity.y < 0 :

@@ -1,29 +1,57 @@
 extends Node
 
 var enemies_killed:int
+var enemies_killed_needed:int = 3
 var score:int = 0
 var parent = get_parent()
+var courent_level:int = 1
 
 
-# Called when the node enters the scene tree for the first time.
+
+func _ready() -> void:
+	game_start()
+
+func game_start():
+	var player = get_parent().get_node("Node2D").get_node("Player")
+	player.set_health(3)
+	
+
 func game_end():
+	var player = get_parent().get_node("Node2D").get_node("Player")
+	if player.get_health() > 0:
+		return
+	
+	player.on_game_end()
+	
 	var game_over = get_parent().get_node("Node2D").get_node("game_over_sprite")
 	game_over.set_visiblity(true)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	change_level()
+	change_levels()
+	game_end()
 
 func enemies_killed_add(): 
 	enemies_killed += 1
 
 func score_add(value):
 	score += value
+	
+func next_level():
+	var level_1 = get_parent().get_node("Node2D").get_node("level_1")
+	var level_2 = get_parent().get_node("Node2D").get_node("level_2")
+	var player = get_parent().get_node("Node2D").get_node("Player")
+	var node2D = get_parent().get_node("Node2D")
+	
+	if courent_level == 1:
+		level_1.toggle_map(false)
+		level_2.toggle_map(true)
+		player.next_level()
+		enemies_killed = 0 
+		enemies_killed_needed = 6
+		node2D.spwan_enemie(120.0,-177.0,false)
 
-func change_level():
-	var parent = get_parent()
-	var node2d = parent.get_node("Node2D")
-	var level_1 = node2d.get_node("level_1")
-	if enemies_killed == 3:
-		level_1.disable_map()
+func change_levels():
+	if enemies_killed == enemies_killed_needed:
+		next_level()

@@ -1,1 +1,9 @@
+res://scenes/player.tscn
+res://scripts/player_script.gd
+res://scenes/Main_scene.tscn
+res://scripts/game_state.gd
+res://scenes/main_scene.gd
+res://scripts/level_2.gd
+res://scripts/map.gd
 res://scripts/zen_chan.gd
+res://scenes/zen_chan.tscn

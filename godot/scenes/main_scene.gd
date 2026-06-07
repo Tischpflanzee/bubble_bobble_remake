@@ -25,10 +25,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func spwan_enemie():
+func spwan_enemie(xpos:float,ypos:float,flip:bool):
 	var enemie_scene = preload("res://scenes/zen_chan.tscn")
 	var enemie = enemie_scene.instantiate()
-	enemie.position = enemie_spawn_point.position
+	enemie.fliped(flip)
+	enemie.position.x = xpos
+	enemie.position.y = ypos
 	add_child(enemie)
 	
 	
@@ -64,7 +66,7 @@ func _on_player_right() -> void:
 
 
 func _on_enemie_spawn_cooldown_timeout() -> void:
-	if zähler_gegner != 1:
-		spwan_enemie()
+	if zähler_gegner != 3:
+		spwan_enemie(132.0,-177.5,false)
 		zähler_gegner += 1
 	pass # Replace with function body.
