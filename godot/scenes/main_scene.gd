@@ -64,7 +64,7 @@ func _on_player_right() -> void:
 
 
 func _on_enemie_spawn_cooldown_timeout() -> void:
-	if zähler_gegner != 3:
+	if zähler_gegner != 1:
 		spwan_enemie()
 		zähler_gegner += 1
 	pass # Replace with function body.

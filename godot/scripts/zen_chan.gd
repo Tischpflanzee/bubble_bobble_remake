@@ -5,21 +5,24 @@ const SPEED = 50.0
 const JUMP_VELOCITY = -100.0
 
 
-
-
-var richtung = -1
-var cooldown:bool
-
 @onready var wall_collsion = $Wall_check
 @onready var sprite = $AnimatedSprite2D
 @onready var jump_cooldown: Timer = $jump_cooldown
 @onready var check_floor: RayCast2D = $check_floor
+@onready var timer: Timer = $check_floor/Timer
+
+
+var richtung = -1
+var cooldown:bool
+var time_left
+
 
 func in_bubble():
 	pass
 
 
 func _ready() -> void:
+	timer.start()
 	jump_cooldown.start()
 	pass
 
@@ -44,12 +47,17 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func flip() -> void:
+	time_left = timer.time_left
+	if time_left != 0: #fixed the problem that zen_chan got stuch on the wall 
+		return
+	
+	
 	if wall_collsion.is_colliding() == true: 
 		richtung *= -1
 		sprite.flip_h = !sprite.flip_h
 		wall_collsion.target_position.x *= -1
 		check_floor.position.x *= -1
-	pass
+	timer.start()
 
 func animations() -> void:
 	$AnimatedSprite2D.play("walk")

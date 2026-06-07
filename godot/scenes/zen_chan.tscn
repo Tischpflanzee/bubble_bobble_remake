@@ -59,4 +59,8 @@ position = Vector2(-8, -5)
 target_position = Vector2(0, 15)
 collision_mask = 8
 
+[node name="Timer" type="Timer" parent="check_floor" unique_id=905421474]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="timeout" from="jump_cooldown" to="." method="_on_jump_cooldown_timeout"]

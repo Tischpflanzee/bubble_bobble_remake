@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bggbdgrr1yor2" path="res://sprites/not_passable.png" id="3_ard34"]
 [ext_resource type="Script" uid="uid://cc3f78vvvqi51" path="res://scripts/map.gd" id="4_4a8l0"]
 [ext_resource type="Texture2D" uid="uid://cg2g2vr7m8lik" path="res://sprites/level_1.png" id="4_fkd63"]
+[ext_resource type="Script" uid="uid://bb2l5d0f1w42c" path="res://scripts/game_over_sprite.gd" id="6_a6g5n"]
+[ext_resource type="Texture2D" uid="uid://bsec8o5n87taa" path="res://sprites/game_over.png" id="7_08h5s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uxkiq"]
 texture = ExtResource("4_fkd63")
@@ -86,6 +88,16 @@ scale = Vector2(0.5, 0.5)
 
 [node name="enemie_spawn_cooldown" type="Timer" parent="." unique_id=1062716591]
 wait_time = 0.5
+
+[node name="game_over_sprite" type="Area2D" parent="." unique_id=953786667]
+visible = false
+position = Vector2(132, -104)
+monitoring = false
+monitorable = false
+script = ExtResource("6_a6g5n")
+
+[node name="sprite" type="Sprite2D" parent="game_over_sprite" unique_id=1052919991]
+texture = ExtResource("7_08h5s")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="create_bubble" from="Player" to="." method="_on_character_body_2d_create_bubble"]
