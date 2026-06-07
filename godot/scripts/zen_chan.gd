@@ -117,10 +117,11 @@ func jump() -> void:
 	
 	if check_celling.is_colliding() == false:
 		velocity.y = 0
-	if self.velocity.y < 0:
-		pass
+
 	var player_pos:int = get_parent().get_node("Player").position.y
 	var self_pos:int = self.position.y
+	
+	
 	
 	if self_pos <= player_pos:
 		check_jump = false
