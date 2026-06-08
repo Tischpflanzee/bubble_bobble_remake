@@ -24,6 +24,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+
 
 func spwan_enemie(xpos:float,ypos:float,flip:bool):
 	var enemie_scene = preload("res://scenes/zen_chan.tscn")

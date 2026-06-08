@@ -41,16 +41,35 @@ func score_add(value):
 func next_level():
 	var level_1 = get_parent().get_node("Node2D").get_node("level_1")
 	var level_2 = get_parent().get_node("Node2D").get_node("level_2")
+	var level_3 = get_parent().get_node("Node2D").get_node("level_3")
 	var player = get_parent().get_node("Node2D").get_node("Player")
 	var node2D = get_parent().get_node("Node2D")
 	
-	if courent_level == 1:
+	if courent_level == 1: #switch to 2
 		level_1.toggle_map(false)
 		level_2.toggle_map(true)
 		player.next_level()
 		enemies_killed = 0 
-		enemies_killed_needed = 6
+		enemies_killed_needed = 4
 		node2D.spwan_enemie(120.0,-177.0,false)
+		node2D.spwan_enemie(141.0,-177.0,true)
+		node2D.spwan_enemie(88.0,-137.0,false)
+		node2D.spwan_enemie(165.0,-137.0,true)
+		courent_level += 1
+	if courent_level == 2: #switch to 3
+		player.next_level()
+		level_2.toggle_map(false)
+		level_3.toggle_map(true)
+		player.next_level()
+		enemies_killed = 0
+		enemies_killed_needed = 4
+		node2D.spwan_enemie(169.0,-181.0,false)
+		node2D.spwan_enemie(86.0,-181.0,true)
+		node2D.spwan_enemie(48.0,-100.0,true)
+		node2D.spwan_enemie(205.0,-99.0,true)
+		
+		
+		pass
 
 func change_levels():
 	if enemies_killed == enemies_killed_needed:
