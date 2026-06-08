@@ -29,9 +29,11 @@ func fliped(toggle:bool):
 		check_floor.position.x *= -1
 
 func _ready() -> void:
+	var rng = RandomNumberGenerator.new()
+	var random_number = rng.randf_range(0.0, 3.0)
+	jump_cooldown.wait_time = random_number
 	jump_cooldown.start()
-	pass
-
+	
 func _process(delta: float) -> void:
 	flip()
 	animations()
@@ -83,8 +85,15 @@ func _on_jump_cooldown_timeout() -> void: # handle jump
 	var parent = get_parent()
 	var player = parent.get_node("Player")
 	
+	
+	
+	
 	if player.position.y < self.position.y - 20 and is_on_floor() and self.position.y > -136:
 		velocity.y = JUMP_VELOCITY 
+		var rng = RandomNumberGenerator.new()
+		var random_number = rng.randf_range(0.0, 2.0)
+		jump_cooldown.wait_time = random_number
+		jump_cooldown.start()
 		
 
 func handle_collision_deactivating_when_jumping():  

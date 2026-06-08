@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://coxiyilryse3h" path="res://sprites/Animated_Sprites/Bub/sprite_7.png" id="8_f1ej7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smehm"]
-size = Vector2(16, 16)
+size = Vector2(12, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vyb7"]
 animations = [{

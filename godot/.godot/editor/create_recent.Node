@@ -1,4 +1,5 @@
 TileMapLayer
+TileMap
 RayCast2D
 Timer
 Sprite2D
@@ -11,4 +12,3 @@ CharacterBody2D
 PathFollow2D
 Path2D
 RigidBody2D
-Camera2D

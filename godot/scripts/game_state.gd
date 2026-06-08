@@ -42,8 +42,40 @@ func next_level():
 	var level_1 = get_parent().get_node("Node2D").get_node("level_1")
 	var level_2 = get_parent().get_node("Node2D").get_node("level_2")
 	var level_3 = get_parent().get_node("Node2D").get_node("level_3")
+	var level_4 = get_parent().get_node("Node2D").get_node("level_4")
 	var player = get_parent().get_node("Node2D").get_node("Player")
 	var node2D = get_parent().get_node("Node2D")
+	
+	if courent_level == 3: #switch to 3
+		player.next_level()
+		level_3.toggle_map(false)
+		level_4.toggle_map(true)
+		player.next_level()
+		enemies_killed = 0
+		enemies_killed_needed = 6
+		node2D.spwan_enemie(79.0,-57.0,true) #true = rechts
+		node2D.spwan_enemie(167.0,-57.0,false) #true = rechts
+		
+		node2D.spwan_enemie(60.0,-140.0,true)
+		node2D.spwan_enemie(185.0,-140.0,false)
+		
+		node2D.spwan_enemie(44.0,-173.0,true)
+		node2D.spwan_enemie(203.0,-173.0,true)
+		
+
+	
+	if courent_level == 2: #switch to 3
+		player.next_level()
+		level_2.toggle_map(false)
+		level_3.toggle_map(true)
+		player.next_level()
+		enemies_killed = 0
+		enemies_killed_needed = 4
+		node2D.spwan_enemie(169.0,-181.0,false)
+		node2D.spwan_enemie(86.0,-181.0,true)
+		node2D.spwan_enemie(48.0,-100.0,true)
+		node2D.spwan_enemie(205.0,-99.0,true)
+		courent_level += 1
 	
 	if courent_level == 1: #switch to 2
 		level_1.toggle_map(false)
@@ -56,20 +88,7 @@ func next_level():
 		node2D.spwan_enemie(88.0,-137.0,false)
 		node2D.spwan_enemie(165.0,-137.0,true)
 		courent_level += 1
-	if courent_level == 2: #switch to 3
-		player.next_level()
-		level_2.toggle_map(false)
-		level_3.toggle_map(true)
-		player.next_level()
-		enemies_killed = 0
-		enemies_killed_needed = 4
-		node2D.spwan_enemie(169.0,-181.0,false)
-		node2D.spwan_enemie(86.0,-181.0,true)
-		node2D.spwan_enemie(48.0,-100.0,true)
-		node2D.spwan_enemie(205.0,-99.0,true)
-		
-		
-		pass
+	
 
 func change_levels():
 	if enemies_killed == enemies_killed_needed:
