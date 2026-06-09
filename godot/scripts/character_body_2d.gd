@@ -11,6 +11,9 @@ const SPEED = 0.5
 var richtung_y = 1
 var richtung_x = 1
 
+func _ready() -> void:
+	$AmimatedSprite2D.play("default")
+
 func teleported():
 	set_collision_mask_value(6,false)
 	teleport_time.start()

@@ -131,7 +131,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void: # Health Mangementd
 	if invincibility_time_left != 0:
 		return
 	
-	if body.is_in_group("Enemie"):
+	if body.is_in_group("Enemie") or body.is_in_group("projectil"):
 		health -= 1
 		alive = false
 		death_animation()
@@ -142,7 +142,7 @@ func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_inde
 	var invincibility_time_left:int = invincibility_time.time_left
 	if invincibility_time_left != 0:
 		return
-	if !area.is_in_group("Enemie"):
+	if !area.is_in_group("Enemie") or !area.is_in_group("projectil"):
 		return
 	
 	health -= 1
