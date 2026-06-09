@@ -43,6 +43,14 @@ func spwan_enemie(xpos:float,ypos:float,flip:bool,type:int):
 		enemie.position.x = xpos
 		enemie.position.y = ypos
 		add_child(enemie)
+	if type == 2:
+		var enemie_scene = preload("res://scenes/beluga.tscn")
+		var enemie = enemie_scene.instantiate()
+		enemie.fliped(flip)
+		
+		enemie.position.x = xpos
+		enemie.position.y = ypos
+		add_child(enemie)
 	
 
 func _on_character_body_2d_create_bubble() -> void:

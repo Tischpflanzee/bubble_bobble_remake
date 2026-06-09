@@ -48,11 +48,34 @@ func next_level():
 	var level_7 = get_parent().get_node("Node2D").get_node("Level").get_node("level_7")
 	var level_8 = get_parent().get_node("Node2D").get_node("Level").get_node("level_8")
 	var level_9 = get_parent().get_node("Node2D").get_node("Level").get_node("level_9")
+	var level_10 = get_parent().get_node("Node2D").get_node("Level").get_node("level_10")
+	
 	
 	
 	
 	var player = get_parent().get_node("Node2D").get_node("Player")
 	var node2D = get_parent().get_node("Node2D")
+	
+	if courent_level == 9: #switch to 10
+		player.next_level()
+		level_9.toggle_map(false)
+		level_10.toggle_map(true)
+		player.next_level()
+		enemies_killed = 0
+		enemies_killed_needed = 5
+		
+		node2D.spwan_enemie(59.0,-136.0,true,0) #true = rechts
+		node2D.spwan_enemie(100.0,-122.0,false,2) #true = rechts
+		#
+		#node2D.spwan_enemie(191.0,-184.0,false,1)
+		#node2D.spwan_enemie(210.0,-153.0,false,1)
+		#
+		#node2D.spwan_enemie(128.0,-120.0,false,1)
+		
+		
+		
+		courent_level += 1
+	
 	
 	if courent_level == 8: #switch to 9
 		player.next_level()

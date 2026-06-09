@@ -4,11 +4,12 @@ func _ready() -> void:
 	timer.start()
 	
 func _on_body_entered(body: Node2D) -> void:
-	if timer.time_left < 0.1:
-		body.position.y = -10.0
+		body.teleported()
+
+		body.position.y = -225.0
 		print("moved")	
 
 func _on_area_entered(area: Area2D) -> void:
-	if timer.time_left < 0.1: 
-		area.position.y = -10.0
+		area.teleported()
+		area.position.y = -225.0
 		print("moved")	

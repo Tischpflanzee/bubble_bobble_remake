@@ -6,10 +6,15 @@ extends Area2D
 @onready var unten: RayCast2D = $Unten
 
 
-const SPEED = 1
+const SPEED = 0.5
 var richtung_y = 1
 var richtung_x = 1
 
+
+func fliped(toggle:bool):
+	if toggle == true:
+		richtung_x = -1 
+		$AmimatedSprite2D.flip_h = true
 
 func _process(delta: float) -> void:
 	self.position.x -= SPEED * richtung_x

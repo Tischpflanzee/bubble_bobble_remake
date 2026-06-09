@@ -10,6 +10,7 @@ const JUMP_VELOCITY = -100.0
 @onready var death_time: Timer = $death_time
 @onready var invincibility_time: Timer = $invincibility_time
 @onready var player_start_pos: Marker2D = $"../Player_Start_Pos"
+@onready var teleport_time: Timer = $teleport_time
 
 
 signal create_bubble
@@ -24,7 +25,19 @@ var alive:bool = true
 func _ready() -> void:
 	_animated_sprite.play("walk")
 	
+func teleported():
+	set_collision_mask_value(6,false)
+	teleport_time.start()
+	pass
+	
 
+func _on_teleport_time_timeout() -> void:
+	set_collision_mask_value(6,true)
+	pass # Replace with function body.
+	
+	
+	
+	
 func on_game_end():
 	alive = false
 	death_time.stop()
@@ -146,6 +159,7 @@ func death_animation():
 
 func _on_death_time_timeout() -> void:
 	alive = true
+
 
 func next_level():
 	self.position = player_start_pos.position
