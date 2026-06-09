@@ -113,7 +113,7 @@ func get_health() -> int:
 	return health
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void: # Health Mangement d
+func _on_area_2d_body_entered(body: Node2D) -> void: # Health Mangementd
 	var invincibility_time_left:int = invincibility_time.time_left
 	if invincibility_time_left != 0:
 		return
@@ -124,6 +124,19 @@ func _on_area_2d_body_entered(body: Node2D) -> void: # Health Mangement d
 		death_animation()
 		print("Health: ", health)
 		invincibility_time.start()
+		
+func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	var invincibility_time_left:int = invincibility_time.time_left
+	if invincibility_time_left != 0:
+		return
+	if !area.is_in_group("Enemie"):
+		return
+	
+	health -= 1
+	alive = false
+	death_animation()
+	print("Health: ", health)
+	invincibility_time.start()
 		
 
 

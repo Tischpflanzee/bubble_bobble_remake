@@ -27,14 +27,22 @@ func _process(delta: float) -> void:
 	
 
 
-func spwan_enemie(xpos:float,ypos:float,flip:bool):
-	var enemie_scene = preload("res://scenes/zen_chan.tscn")
-	var enemie = enemie_scene.instantiate()
-	enemie.fliped(flip)
-	enemie.position.x = xpos
-	enemie.position.y = ypos
-	add_child(enemie)
+func spwan_enemie(xpos:float,ypos:float,flip:bool,type:int):
+	if type == 0:
+		var enemie_scene = preload("res://scenes/zen_chan.tscn")
+		var enemie = enemie_scene.instantiate()
+		enemie.fliped(flip)
+		enemie.position.x = xpos
+		enemie.position.y = ypos
+		add_child(enemie)
 	
+	if type == 1:
+		var enemie_scene = preload("res://scenes/mighta.tscn")
+		var enemie = enemie_scene.instantiate()
+		enemie.fliped(flip)
+		enemie.position.x = xpos
+		enemie.position.y = ypos
+		add_child(enemie)
 	
 
 func _on_character_body_2d_create_bubble() -> void:
@@ -69,6 +77,6 @@ func _on_player_right() -> void:
 
 func _on_enemie_spawn_cooldown_timeout() -> void:
 	if zähler_gegner != 3:
-		spwan_enemie(132.0,-177.5,false)
+		spwan_enemie(132.0,-177.5,false,0)
 		zähler_gegner += 1
 	pass # Replace with function body.

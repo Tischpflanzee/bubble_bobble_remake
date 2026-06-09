@@ -64,7 +64,7 @@ func _on_float_time_timeout() -> void:
 	pass # Replace with function body.
 
 func pop() -> void:
-	get_parent().remove_child(self)
+	queue_free()
 	print("poped")
 	float_time.stop()
 	pass

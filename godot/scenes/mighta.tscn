@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://bkvh4bocm67ko"]
+
+[ext_resource type="Script" uid="uid://cx6jym40as55q" path="res://scripts/mighta.gd" id="1_2d36p"]
+[ext_resource type="Texture2D" uid="uid://db5hmqecsntgj" path="res://sprites/mighta.png" id="2_psqbg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpjb6"]
+size = Vector2(14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p16dm"]
+atlas = ExtResource("2_psqbg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ux6bo"]
+atlas = ExtResource("2_psqbg")
+region = Rect2(19, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vaqpe"]
+atlas = ExtResource("2_psqbg")
+region = Rect2(38, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v64j4"]
+atlas = ExtResource("2_psqbg")
+region = Rect2(57, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lcp5"]
+atlas = ExtResource("2_psqbg")
+region = Rect2(76, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v31rp"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p16dm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ux6bo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vaqpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v64j4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lcp5")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Mighta" type="CharacterBody2D" unique_id=1907262511 groups=["Enemie"]]
+collision_layer = 4
+collision_mask = 26
+script = ExtResource("1_2d36p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=822262373 groups=["Enemie"]]
+shape = SubResource("RectangleShape2D_jpjb6")
+
+[node name="Wall_check" type="RayCast2D" parent="." unique_id=179720632]
+position = Vector2(0, 4)
+target_position = Vector2(-12, 0)
+collision_mask = 18
+
+[node name="jump_cooldown" type="Timer" parent="." unique_id=673294707]
+wait_time = 0.8
+
+[node name="check_floor" type="RayCast2D" parent="." unique_id=302023246]
+position = Vector2(-8, -5)
+target_position = Vector2(0, 15)
+collision_mask = 8
+
+[node name="Timer" type="Timer" parent="check_floor" unique_id=905421474]
+wait_time = 0.1
+one_shot = true
+
+[node name="check_celling" type="RayCast2D" parent="." unique_id=1280392548]
+position = Vector2(0, 8)
+target_position = Vector2(0, -33)
+collision_mask = 8
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1969645186 groups=["Enemie"]]
+sprite_frames = SubResource("SpriteFrames_v31rp")
+animation = &"walk"
+
+[node name="check_player" type="RayCast2D" parent="." unique_id=353477128]
+target_position = Vector2(-101, 0)
+
+[node name="shoot_timer" type="Timer" parent="." unique_id=57326885]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="timeout" from="jump_cooldown" to="." method="_on_jump_cooldown_timeout"]

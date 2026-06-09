@@ -36,7 +36,7 @@ size = Vector2(14, 16)
 
 [node name="Zen-chan" type="CharacterBody2D" unique_id=1907262511 groups=["Enemie"]]
 collision_layer = 4
-collision_mask = 10
+collision_mask = 26
 script = ExtResource("1_jpjb6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1180496114]
@@ -48,8 +48,9 @@ frame_progress = 0.93481696
 shape = SubResource("RectangleShape2D_jpjb6")
 
 [node name="Wall_check" type="RayCast2D" parent="." unique_id=179720632]
-target_position = Vector2(-10, 0)
-collision_mask = 2
+position = Vector2(0, 4)
+target_position = Vector2(-12, 0)
+collision_mask = 18
 
 [node name="jump_cooldown" type="Timer" parent="." unique_id=673294707]
 wait_time = 0.8

@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cxk12lbu2xt44"]
+
+[ext_resource type="Script" uid="uid://61ju0gs07mfl" path="res://scripts/character_body_2d.gd" id="1_h3w05"]
+[ext_resource type="Texture2D" uid="uid://bct0q7ntjj8yf" path="res://sprites/beluga.png" id="2_8j1bt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxrh2"]
+atlas = ExtResource("2_8j1bt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbu1u"]
+atlas = ExtResource("2_8j1bt")
+region = Rect2(21, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s77mv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxrh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbu1u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmira"]
+size = Vector2(16, 15)
+
+[node name="CharacterBody2D" type="Area2D" unique_id=423805595 groups=["Enemie"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_h3w05")
+
+[node name="AmimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1672663176]
+sprite_frames = SubResource("SpriteFrames_s77mv")
+frame_progress = 0.9578695
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1070915584 groups=["Enemie"]]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_bmira")
+
+[node name="Oben" type="RayCast2D" parent="." unique_id=1333665062]
+target_position = Vector2(0, -8)
+collision_mask = 26
+
+[node name="Rechts" type="RayCast2D" parent="." unique_id=838222343]
+target_position = Vector2(9, 0)
+collision_mask = 26
+
+[node name="Links" type="RayCast2D" parent="." unique_id=1015670965]
+target_position = Vector2(-9, 0)
+collision_mask = 26
+
+[node name="Unten" type="RayCast2D" parent="." unique_id=1567761371]
+position = Vector2(0, -6)
+target_position = Vector2(0, 15)
+collision_mask = 26

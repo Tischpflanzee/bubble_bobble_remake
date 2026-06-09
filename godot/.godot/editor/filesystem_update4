@@ -1,1 +1,14 @@
 res://scenes/Main_scene.tscn
+res://scenes/zen_chan.tscn
+res://scripts/game_state.gd
+res://scripts/bubble_2d.gd
+res://scenes/mighta.tscn
+res://scripts/zen_chan.gd
+res://scripts/mighta.gd
+res://scenes/shoot.tscn
+res://scripts/shoot.gd
+res://scripts/player_script.gd
+res://scenes/player.tscn
+res://scenes/main_scene.gd
+res://scripts/character_body_2d.gd
+res://scenes/beluga.tscn

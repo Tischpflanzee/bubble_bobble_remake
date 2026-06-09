@@ -9,11 +9,14 @@ const JUMP_VELOCITY = -100.0
 
 var richtung = -1
 var cooldown:bool
+var player_in_front:bool
 
 @onready var wall_collsion = $Wall_check
 @onready var sprite = $AnimatedSprite2D
 @onready var jump_cooldown: Timer = $jump_cooldown
 @onready var check_floor: RayCast2D = $check_floor
+@onready var check_player: RayCast2D = $check_player
+@onready var shoot_timer: Timer = $shoot_timer
 
 
 
@@ -21,6 +24,7 @@ func in_bubble():
 	pass
 
 func fliped(toggle:bool):
+	var check_player: RayCast2D = $check_player
 	var sprite = $AnimatedSprite2D  # needed when just spawned
 	var wall_collsion = $Wall_check
 	var check_floor: RayCast2D = $check_floor
@@ -30,9 +34,11 @@ func fliped(toggle:bool):
 		sprite.flip_h = true
 		wall_collsion.target_position.x *= -1
 		check_floor.position.x *= -1
+		check_player.target_position.x *= -1
 
 
 func _ready() -> void:
+	shoot_timer.start()
 	var rng = RandomNumberGenerator.new()
 	var random_number = rng.randf_range(0.0, 3.0)
 	jump_cooldown.wait_time = random_number
@@ -43,11 +49,44 @@ func _process(delta: float) -> void:
 	animations()
 	jump_over_hole()
 	handle_collision_deactivating_when_jumping()
+	check_player_func()
+
+func check_player_func():
+	if not is_on_floor():
+		return
+	
+	if check_player.is_colliding():
+		player_in_front = true
+		shoot()
+	
+	else:
+		player_in_front = false
+		
+
+func shoot():
+	
+	if shoot_timer.time_left != 0:
+		return
+	
+	shoot_timer.start()
+	
+	var scene = preload("res://scenes/shoot.tscn")
+	var shoot = scene.instantiate()
+	var parent = get_parent()
+	shoot.position = self.position
+	
+	if !$AnimatedSprite2D.flip_h == true:
+		shoot.flip()
+	parent.add_child(shoot)
+	
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta / 8
+	
+	if player_in_front:
+		return
 
 	var parent = get_parent()
 	var player = parent.get_node("Player")
@@ -66,8 +105,7 @@ func flip() -> void:
 		sprite.flip_h = !sprite.flip_h
 		wall_collsion.target_position.x *= -1
 		check_floor.position.x *= -1
-
-	pass
+		check_player.target_position.x *= -1
 
 func animations() -> void:
 	$AnimatedSprite2D.play("walk")
