@@ -142,14 +142,12 @@ func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_inde
 	var invincibility_time_left:int = invincibility_time.time_left
 	if invincibility_time_left != 0:
 		return
-	if !area.is_in_group("Enemie") or !area.is_in_group("projectil"):
-		return
-	
-	health -= 1
-	alive = false
-	death_animation()
-	print("Health: ", health)
-	invincibility_time.start()
+	if area.is_in_group("Enemie") or area.is_in_group("projectil"):
+		health -= 1
+		alive = false
+		death_animation()
+		print("Health: ", health)
+		invincibility_time.start()
 		
 
 
