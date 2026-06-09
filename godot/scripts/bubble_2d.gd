@@ -39,7 +39,7 @@ func bubbeld():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	enemie_collisions()
+	#enemie_collisions()
 	manage_wall_collision() 
 	bubbeld()
 	pass
@@ -78,6 +78,7 @@ func manage_wall_collision():
 
 
 func enemie_collisions():
+	return
 	var colider_r = rechts.get_collider()
 	var colider_l = links.get_collider()
 	
@@ -91,4 +92,23 @@ func enemie_collisions():
 		pop()
 		GameState.score_add(500)
 		GameState.enemies_killed_add()
+	
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Enemie"):
+		body.queue_free()
+		GameState.score_add(500)
+		GameState.enemies_killed_add()
+		pop()
+	
+	
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Enemie"):
+		area.queue_free()
+		GameState.score_add(500)
+		GameState.enemies_killed_add()
+		pop()
 	

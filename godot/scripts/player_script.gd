@@ -162,4 +162,5 @@ func _on_death_time_timeout() -> void:
 
 
 func next_level():
+	invincibility_time.start()
 	self.position = player_start_pos.position
