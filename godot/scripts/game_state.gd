@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func game_start():
 	var player = get_parent().get_node("Node2D").get_node("Player")
-	player.set_health(5)
+	player.set_health(500)
 	
 
 func game_end():

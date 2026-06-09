@@ -13,6 +13,7 @@ config_version=5
 config/name="Bubble"
 run/main_scene="uid://b34846annbi1n"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+run/max_fps=90
 config/icon="res://icon.svg"
 
 [autoload]
@@ -24,6 +25,7 @@ GameState="*uid://6bobu37i5xpw"
 window/size/mode=3
 window/size/resizable=false
 window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
 
 [global_group]
 
