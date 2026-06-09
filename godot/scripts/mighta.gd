@@ -17,8 +17,17 @@ var player_in_front:bool
 @onready var check_floor: RayCast2D = $check_floor
 @onready var check_player: RayCast2D = $check_player
 @onready var shoot_timer: Timer = $shoot_timer
+@onready var teleport_time: Timer = $teleport_time
 
+func teleported():
+	set_collision_mask_value(6,false)
+	teleport_time.start()
+	pass
+	
 
+func _on_teleport_time_timeout() -> void:
+	set_collision_mask_value(6,true)
+	pass # Replace with function body.
 
 func in_bubble():
 	pass

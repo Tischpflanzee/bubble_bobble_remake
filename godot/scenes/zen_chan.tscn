@@ -35,7 +35,7 @@ animations = [{
 size = Vector2(14, 16)
 
 [node name="Zen-chan" type="CharacterBody2D" unique_id=1907262511 groups=["Enemie"]]
-collision_layer = 4
+collision_layer = 36
 collision_mask = 26
 script = ExtResource("1_jpjb6")
 
@@ -68,5 +68,9 @@ one_shot = true
 position = Vector2(0, 8)
 target_position = Vector2(0, -33)
 collision_mask = 8
+
+[node name="teleport_time" type="Timer" parent="." unique_id=975593221]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="timeout" from="jump_cooldown" to="." method="_on_jump_cooldown_timeout"]

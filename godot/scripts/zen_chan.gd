@@ -14,8 +14,17 @@ var cooldown:bool
 @onready var sprite = $AnimatedSprite2D
 @onready var jump_cooldown: Timer = $jump_cooldown
 @onready var check_floor: RayCast2D = $check_floor
+@onready var teleport_time: Timer = $teleport_time
 
+func teleported():
+	set_collision_mask_value(6,false)
+	teleport_time.start()
+	pass
+	
 
+func _on_teleport_time_timeout() -> void:
+	set_collision_mask_value(6,true)
+	pass # Replace with function body.
 
 func in_bubble():
 	pass

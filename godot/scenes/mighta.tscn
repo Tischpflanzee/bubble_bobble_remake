@@ -95,4 +95,8 @@ target_position = Vector2(-101, 0)
 wait_time = 1.5
 one_shot = true
 
+[node name="teleport_time" type="Timer" parent="." unique_id=730004426]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="jump_cooldown" to="." method="_on_jump_cooldown_timeout"]

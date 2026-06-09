@@ -1,9 +1,5 @@
 res://scenes/Main_scene.tscn
 res://scripts/game_state.gd
-res://scenes/beluga.tscn
-res://scripts/character_body_2d.gd
-res://scenes/main_scene.gd
-res://scripts/top_bootom.gd
-res://scenes/bottom_top.gd
-res://scripts/player_script.gd
 res://scenes/player.tscn
+res://scenes/bubble.tscn
+res://scenes/bubble_2d.tscn

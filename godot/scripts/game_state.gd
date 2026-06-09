@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func game_start():
 	var player = get_parent().get_node("Node2D").get_node("Player")
-	player.set_health(100)
+	player.set_health(5)
 	
 
 func game_end():
@@ -25,12 +25,29 @@ func game_end():
 	
 	var game_over = get_parent().get_node("Node2D").get_node("game_over_sprite")
 	game_over.set_visiblity(true)
+
+func score_set():
+	high_score_set()
+	lives_set()
+func high_score_set():
+	var highscore:Label = get_parent().get_node("Node2D").get_node("Control").get_node("Highscore")
+	var score_string:String = str(score)
+	highscore.text = "Score:\n" +  score_string 
+func lives_set():
+	
+	var lives:Label = get_parent().get_node("Node2D").get_node("Control").get_node("Lives")
+	var player = get_parent().get_node("Node2D").get_node("Player")
+	var lives_string_bub:String = str(player.get_health())
+	
+	if player.get_health() >= 0:
+		lives.text = "Life: " + lives_string_bub
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	change_levels()
 	game_end()
+	score_set()
 
 func enemies_killed_add(): 
 	enemies_killed += 1
@@ -49,12 +66,55 @@ func next_level():
 	var level_8 = get_parent().get_node("Node2D").get_node("Level").get_node("level_8")
 	var level_9 = get_parent().get_node("Node2D").get_node("Level").get_node("level_9")
 	var level_10 = get_parent().get_node("Node2D").get_node("Level").get_node("level_10")
+	var level_11 = get_parent().get_node("Node2D").get_node("Level").get_node("level_11")
+	var level_12 = get_parent().get_node("Node2D").get_node("Level").get_node("level_12")
 	
 	
 	
 	
 	var player = get_parent().get_node("Node2D").get_node("Player")
 	var node2D = get_parent().get_node("Node2D")
+	
+	if courent_level == 11: #switch to 11
+		player.next_level()
+		level_11.toggle_map(false)
+		level_12.toggle_map(true)
+		player.next_level()
+		enemies_killed = 0
+		enemies_killed_needed = 6
+		
+		node2D.spwan_enemie(10.0,-60.0,true,2) #true = rechts
+		node2D.spwan_enemie(10.0,-75.0,true,2) #true = rechts
+		node2D.spwan_enemie(10.0,-90.0,true,2) #true = rechts
+		
+		node2D.spwan_enemie(230.0,-60.0,false,2) #true = rechts
+		node2D.spwan_enemie(230.0,-75.0,false,2) #true = rechts
+		node2D.spwan_enemie(230.0,-90.0,false,2) #true = rechts
+		
+		
+			
+		courent_level += 1
+	
+	if courent_level == 10: #switch to 11
+		player.next_level()
+		level_10.toggle_map(false)
+		level_11.toggle_map(true)
+		player.next_level()
+		enemies_killed = 0
+		enemies_killed_needed = 7
+		
+		node2D.spwan_enemie(62.0,-172.0,false,2) #true = rechts
+		node2D.spwan_enemie(74.0,-187.0,false,2) #true = rechts
+		
+		node2D.spwan_enemie(110.0,-198.0,false,0)
+		node2D.spwan_enemie(127.0,-198.0,false,0)
+		node2D.spwan_enemie(150.0,-198.0,true,0)
+		
+		node2D.spwan_enemie(182.0,-172.0,false,2) 
+		node2D.spwan_enemie(197.0,-187.0,false,2) 
+			
+		courent_level += 1
+	
 	
 	if courent_level == 9: #switch to 10
 		player.next_level()
@@ -66,11 +126,12 @@ func next_level():
 		
 		node2D.spwan_enemie(59.0,-136.0,true,0) #true = rechts
 		node2D.spwan_enemie(100.0,-122.0,false,2) #true = rechts
-		#
-		#node2D.spwan_enemie(191.0,-184.0,false,1)
-		#node2D.spwan_enemie(210.0,-153.0,false,1)
-		#
-		#node2D.spwan_enemie(128.0,-120.0,false,1)
+		
+		node2D.spwan_enemie(127.0,-130.0,true,2)
+		node2D.spwan_enemie(145.0,-122.0,true,2)
+		
+		node2D.spwan_enemie(114.0,-18.0,false,0)
+		node2D.spwan_enemie(140.0,-18.0,true,0)
 		
 		
 		

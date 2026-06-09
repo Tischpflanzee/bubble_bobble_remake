@@ -4,12 +4,22 @@ extends Area2D
 @onready var rechts: RayCast2D = $Rechts
 @onready var links: RayCast2D = $Links
 @onready var unten: RayCast2D = $Unten
+@onready var teleport_time: Timer = $teleport_time
 
 
 const SPEED = 0.5
 var richtung_y = 1
 var richtung_x = 1
 
+func teleported():
+	set_collision_mask_value(6,false)
+	teleport_time.start()
+	pass
+	
+
+func _on_teleport_time_timeout() -> void:
+	set_collision_mask_value(6,true)
+	pass # Replace with function body.
 
 func fliped(toggle:bool):
 	if toggle == true:

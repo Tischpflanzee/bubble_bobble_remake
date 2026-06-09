@@ -26,13 +26,13 @@ func _ready() -> void:
 	_animated_sprite.play("walk")
 	
 func teleported():
-	set_collision_mask_value(6,false)
+	set_collision_mask_value(7,false)
 	teleport_time.start()
 	pass
 	
 
 func _on_teleport_time_timeout() -> void:
-	set_collision_mask_value(6,true)
+	set_collision_mask_value(7,true)
 	pass # Replace with function body.
 	
 	
