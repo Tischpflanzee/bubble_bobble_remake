@@ -82,6 +82,7 @@ func next_level():
 		level_1.toggle_map(true)
 		get_parent().get_node("Node2D").get_node("game_over_sprite").set_visiblity(true)
 		player.next_level()
+		score *=
 		enemies_killed = 0
 		enemies_killed_needed = 6
 
