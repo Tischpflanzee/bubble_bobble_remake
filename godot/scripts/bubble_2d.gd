@@ -101,7 +101,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		GameState.score_add(500)
 		GameState.enemies_killed_add()
 		pop()
-	
+	if body.is_in_group("bub_k"):
+		pop()
 	
 
 
@@ -111,4 +112,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		GameState.score_add(500)
 		GameState.enemies_killed_add()
 		pop()
-	
+	if area.is_in_group("bub_k"):
+		pop()	

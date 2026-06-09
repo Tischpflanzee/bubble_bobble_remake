@@ -75,7 +75,24 @@ func next_level():
 	var player = get_parent().get_node("Node2D").get_node("Player")
 	var node2D = get_parent().get_node("Node2D")
 	
-	if courent_level == 11: #switch to 11
+	if courent_level == 11: #switch to 12
+		player.next_level()
+		level_11.toggle_map(false)
+		level_12.toggle_map(false)
+		level_1.toggle_map(true)
+		get_parent().get_node("Node2D").get_node("game_over_sprite").set_visiblity(true)
+		player.next_level()
+		enemies_killed = 0
+		enemies_killed_needed = 6
+
+		
+		
+			
+		courent_level += 1
+	
+	
+	
+	if courent_level == 11: #switch to 12
 		player.next_level()
 		level_11.toggle_map(false)
 		level_12.toggle_map(true)
@@ -94,6 +111,8 @@ func next_level():
 		
 			
 		courent_level += 1
+		
+		
 	
 	if courent_level == 10: #switch to 11
 		player.next_level()
